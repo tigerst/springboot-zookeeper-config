@@ -23,5 +23,5 @@
 1.配置中心可以通过zkui查看和修改</br>
 2.zkui配置可参考https://github.com/DeemOpen/zkui	</br>
 #3.使用步骤</br>
-1.先在zookeeper上增加项目配置文件，如果先启动项目则会找不到文件报错</br>
+1.先在zookeeper上增加项目配置文件，如果先启动项目则会找不到文件报错。（将dubboService.txt文件上传到zookeeper配置中心）</br>
 2.再启动项目</br>
