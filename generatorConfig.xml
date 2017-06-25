@@ -19,7 +19,7 @@
         </commentGenerator>
 
         <!--数据库连接信息 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.7.111.33:3306/financetest" userId="financetest"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://mysql-server:3306/financetest" userId="financetest"
                         password="financetest">
         </jdbcConnection>
 
