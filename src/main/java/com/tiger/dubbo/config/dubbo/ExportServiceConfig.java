@@ -1,5 +1,6 @@
 package com.tiger.dubbo.config.dubbo;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -26,12 +27,8 @@ public class ExportServiceConfig {
         serviceBean.setVersion(Constants.appConfig.getProperty("dubbo.service.version").trim());	//dubbo.service.version
         serviceBean.setInterface(DubboService.class);
         serviceBean.setRef(dubboService);
-        String timeout = Constants.appConfig.getProperty("dubbo.service.timeout");
-        if(timeout!=null && !"".equalsIgnoreCase(timeout))
-        	serviceBean.setTimeout(Integer.parseInt(timeout.trim()));	//dubbo.service.timeout	//超时
-        String retries = Constants.appConfig.getProperty("dubbo.service.retries");
-        if(retries!=null && !"".equalsIgnoreCase(retries))
-        	serviceBean.setRetries(Integer.parseInt(retries.trim()));	//dubbo.service.retries	//重试次数
+        serviceBean.setTimeout(NumberUtils.toInt(Constants.appConfig.getProperty("dubbo.service.timeout").trim(), 5000));	//dubbo.service.timeout	//超时
+        serviceBean.setRetries(NumberUtils.toInt(Constants.appConfig.getProperty("dubbo.service.retries").trim(), 3));	//dubbo.service.retries	//重试次数
         return serviceBean;
     }
 	

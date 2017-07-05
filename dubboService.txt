@@ -33,8 +33,8 @@
 /appConfig/dubboService=logging.file=/home/dubbo-service/logs/dubbo-service.log
 /appConfig/dubboService=logging.level.org.springframework.web=INFO
 /appConfig/dubboService=mail.debug=false
-/appConfig/dubboService=mail.host=smtp.lakala.com
-/appConfig/dubboService=mail.password=SOPA/PIPA BLACKLISTED VALUE
+/appConfig/dubboService=mail.host=smtp.qq.com
+/appConfig/dubboService=mail.password=******
 /appConfig/dubboService=mail.smtp.auth=true
 /appConfig/dubboService=mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
 /appConfig/dubboService=mail.smtp.socketFactory.fallback=false
@@ -42,7 +42,7 @@
 /appConfig/dubboService=mail.smtp.ssl.enable=false
 /appConfig/dubboService=mail.smtp.timeout=60000
 /appConfig/dubboService=mail.transport.protocol=smtp
-/appConfig/dubboService=mail.username=pos_service@lakala.com
+/appConfig/dubboService=mail.username=******@qq.com
 /appConfig/dubboService=redis.hostName=hserver103
 /appConfig/dubboService=redis.pool.maxIdle=50
 /appConfig/dubboService=redis.pool.maxTotal=200

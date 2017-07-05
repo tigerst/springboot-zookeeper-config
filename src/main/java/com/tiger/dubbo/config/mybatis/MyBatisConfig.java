@@ -26,6 +26,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.tiger.dubbo.utils.Constants;
 
@@ -61,7 +62,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();	//资源文件路径解析器，xml配置时所需
 		try {
 			String mappingXml = Constants.appConfig.getProperty("spring.mybatis.mappingXml").trim();
-			if(mappingXml != null && !"".equalsIgnoreCase(mappingXml))
+			if(StringUtils.isNotEmpty(mappingXml))
 				sqlSessionFactoryBean.setMapperLocations(resolver.getResources(mappingXml));	//mapper.xml配置
 			return sqlSessionFactoryBean.getObject();
 		} catch (Exception e) {

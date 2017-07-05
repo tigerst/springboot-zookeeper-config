@@ -1,5 +1,7 @@
 package com.tiger.dubbo.config.multidatasource;
 
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,41 +35,42 @@ public class DataSourceConfig {
 		 */
 		// 初始化大小
 		druidDataSource.setInitialSize(
-				Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.initialSize").trim()));
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.initialSize").trim(), 5));
 		// 线程池最大活动数
-		druidDataSource
-				.setMaxActive(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.maxActive").trim()));
+		druidDataSource.setMaxActive(
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.maxActive").trim(), 10));
 		// 线程池最小闲置数
-		druidDataSource
-				.setMinIdle(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.minIdle").trim()));
+		druidDataSource.setMinIdle(
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.minIdle").trim(), 3));
 
 		// 配置获取连接等待超时的时间
-		druidDataSource
-				.setMaxWait(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.maxWait").trim()));
+		druidDataSource.setMaxWait(
+				NumberUtils.toLong(Constants.appConfig.getProperty("spring.datasource.master.maxWait").trim(), 60000));
 		// 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-		druidDataSource.setTimeBetweenEvictionRunsMillis(Long
-				.parseLong(Constants.appConfig.getProperty("spring.datasource.master.timeBetweenEvictionRunsMillis").trim()));
+		druidDataSource.setTimeBetweenEvictionRunsMillis(NumberUtils.toLong(
+				Constants.appConfig.getProperty("spring.datasource.master.timeBetweenEvictionRunsMillis").trim(),
+				60000));
 		// 配置一个连接在池中最小生存的时间，单位是毫秒
-		druidDataSource.setMinEvictableIdleTimeMillis(Long
-				.parseLong(Constants.appConfig.getProperty("spring.datasource.master.minEvictableIdleTimeMillis").trim()));
+		druidDataSource.setMinEvictableIdleTimeMillis(NumberUtils.toLong(
+				Constants.appConfig.getProperty("spring.datasource.master.minEvictableIdleTimeMillis").trim(), 300000));
 		// 用来检测连接是否有效的sql，要求是一个查询语句
 		druidDataSource
 				.setValidationQuery(Constants.appConfig.getProperty("spring.datasource.master.validationQuery").trim());
 		/*
 		 * 检测连接
 		 */
-		druidDataSource.setTestWhileIdle(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testWhileIdle").trim()));
-		druidDataSource.setTestOnBorrow(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnBorrow").trim()));
-		druidDataSource.setTestOnReturn(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnReturn").trim()));
+		druidDataSource.setTestWhileIdle(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testWhileIdle").trim()));
+		druidDataSource.setTestOnBorrow(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnBorrow").trim()));
+		druidDataSource.setTestOnReturn(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnReturn").trim()));
 
 		// 是否开启PSCache
-		druidDataSource.setPoolPreparedStatements(Boolean
-				.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.poolPreparedStatements").trim()));
+		druidDataSource.setPoolPreparedStatements(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.poolPreparedStatements").trim()));
 		// 指定每个连接上PSCache的大小
-		druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(Constants.appConfig
+		druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(NumberUtils.toInt(Constants.appConfig
 				.getProperty("spring.datasource.master.maxPoolPreparedStatementPerConnectionSize").trim()));
 		// 配置监控统计拦截的filters
 		druidDataSource.setFilters(Constants.appConfig.getProperty("spring.datasource.master.filters").trim());
@@ -75,8 +78,8 @@ public class DataSourceConfig {
 		druidDataSource.setConnectionProperties(
 				Constants.appConfig.getProperty("spring.datasource.master.connectionProperties").trim());
 		// 设置公用监控数据，合并多个DruidDataSource的监控数据
-		druidDataSource.setUseGlobalDataSourceStat(Boolean
-				.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.useGlobalDataSourceStat").trim()));
+		druidDataSource.setUseGlobalDataSourceStat(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.useGlobalDataSourceStat").trim()));
 		druidDataSource.init(); // 初始化
 		return druidDataSource;
 	}
@@ -101,41 +104,42 @@ public class DataSourceConfig {
 		 */
 		// 初始化大小
 		druidDataSource.setInitialSize(
-				Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.initialSize").trim()));
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.initialSize").trim(), 5));
 		// 线程池最大活动数
-		druidDataSource
-				.setMaxActive(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.maxActive").trim()));
+		druidDataSource.setMaxActive(
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.maxActive").trim(), 10));
 		// 线程池最小闲置数
-		druidDataSource
-				.setMinIdle(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.minIdle").trim()));
+		druidDataSource.setMinIdle(
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.minIdle").trim(), 3));
 
 		// 配置获取连接等待超时的时间
-		druidDataSource
-				.setMaxWait(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.maxWait").trim()));
+		druidDataSource.setMaxWait(
+				NumberUtils.toLong(Constants.appConfig.getProperty("spring.datasource.master.maxWait").trim(), 60000));
 		// 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-		druidDataSource.setTimeBetweenEvictionRunsMillis(Long
-				.parseLong(Constants.appConfig.getProperty("spring.datasource.master.timeBetweenEvictionRunsMillis").trim()));
+		druidDataSource.setTimeBetweenEvictionRunsMillis(NumberUtils.toLong(
+				Constants.appConfig.getProperty("spring.datasource.master.timeBetweenEvictionRunsMillis").trim(),
+				60000));
 		// 配置一个连接在池中最小生存的时间，单位是毫秒
-		druidDataSource.setMinEvictableIdleTimeMillis(Long
-				.parseLong(Constants.appConfig.getProperty("spring.datasource.master.minEvictableIdleTimeMillis").trim()));
+		druidDataSource.setMinEvictableIdleTimeMillis(NumberUtils.toLong(
+				Constants.appConfig.getProperty("spring.datasource.master.minEvictableIdleTimeMillis").trim(), 300000));
 		// 用来检测连接是否有效的sql，要求是一个查询语句
 		druidDataSource
 				.setValidationQuery(Constants.appConfig.getProperty("spring.datasource.master.validationQuery").trim());
 		/*
 		 * 检测连接
 		 */
-		druidDataSource.setTestWhileIdle(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testWhileIdle").trim()));
-		druidDataSource.setTestOnBorrow(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnBorrow").trim()));
-		druidDataSource.setTestOnReturn(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnReturn").trim()));
+		druidDataSource.setTestWhileIdle(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testWhileIdle").trim()));
+		druidDataSource.setTestOnBorrow(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnBorrow").trim()));
+		druidDataSource.setTestOnReturn(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnReturn").trim()));
 
 		// 是否开启PSCache
-		druidDataSource.setPoolPreparedStatements(Boolean
-				.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.poolPreparedStatements").trim()));
+		druidDataSource.setPoolPreparedStatements(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.poolPreparedStatements").trim()));
 		// 指定每个连接上PSCache的大小
-		druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(Constants.appConfig
+		druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(NumberUtils.toInt(Constants.appConfig
 				.getProperty("spring.datasource.master.maxPoolPreparedStatementPerConnectionSize").trim()));
 		// 配置监控统计拦截的filters
 		druidDataSource.setFilters(Constants.appConfig.getProperty("spring.datasource.master.filters").trim());
@@ -143,8 +147,8 @@ public class DataSourceConfig {
 		druidDataSource.setConnectionProperties(
 				Constants.appConfig.getProperty("spring.datasource.master.connectionProperties").trim());
 		// 设置公用监控数据，合并多个DruidDataSource的监控数据
-		druidDataSource.setUseGlobalDataSourceStat(Boolean
-				.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.useGlobalDataSourceStat").trim()));
+		druidDataSource.setUseGlobalDataSourceStat(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.useGlobalDataSourceStat").trim()));
 		druidDataSource.init(); // 初始化
 		return druidDataSource;
 	}
@@ -169,41 +173,42 @@ public class DataSourceConfig {
 		 */
 		// 初始化大小
 		druidDataSource.setInitialSize(
-				Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.initialSize").trim()));
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.initialSize").trim(), 5));
 		// 线程池最大活动数
-		druidDataSource
-				.setMaxActive(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.maxActive").trim()));
+		druidDataSource.setMaxActive(
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.maxActive").trim(), 10));
 		// 线程池最小闲置数
-		druidDataSource
-				.setMinIdle(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.minIdle").trim()));
+		druidDataSource.setMinIdle(
+				NumberUtils.toInt(Constants.appConfig.getProperty("spring.datasource.master.minIdle").trim(), 3));
 
 		// 配置获取连接等待超时的时间
-		druidDataSource
-				.setMaxWait(Integer.parseInt(Constants.appConfig.getProperty("spring.datasource.master.maxWait").trim()));
+		druidDataSource.setMaxWait(
+				NumberUtils.toLong(Constants.appConfig.getProperty("spring.datasource.master.maxWait").trim(), 60000));
 		// 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-		druidDataSource.setTimeBetweenEvictionRunsMillis(Long
-				.parseLong(Constants.appConfig.getProperty("spring.datasource.master.timeBetweenEvictionRunsMillis").trim()));
+		druidDataSource.setTimeBetweenEvictionRunsMillis(NumberUtils.toLong(
+				Constants.appConfig.getProperty("spring.datasource.master.timeBetweenEvictionRunsMillis").trim(),
+				60000));
 		// 配置一个连接在池中最小生存的时间，单位是毫秒
-		druidDataSource.setMinEvictableIdleTimeMillis(Long
-				.parseLong(Constants.appConfig.getProperty("spring.datasource.master.minEvictableIdleTimeMillis").trim()));
+		druidDataSource.setMinEvictableIdleTimeMillis(NumberUtils.toLong(
+				Constants.appConfig.getProperty("spring.datasource.master.minEvictableIdleTimeMillis").trim(), 300000));
 		// 用来检测连接是否有效的sql，要求是一个查询语句
 		druidDataSource
 				.setValidationQuery(Constants.appConfig.getProperty("spring.datasource.master.validationQuery").trim());
 		/*
 		 * 检测连接
 		 */
-		druidDataSource.setTestWhileIdle(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testWhileIdle").trim()));
-		druidDataSource.setTestOnBorrow(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnBorrow").trim()));
-		druidDataSource.setTestOnReturn(
-				Boolean.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnReturn").trim()));
+		druidDataSource.setTestWhileIdle(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testWhileIdle").trim()));
+		druidDataSource.setTestOnBorrow(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnBorrow").trim()));
+		druidDataSource.setTestOnReturn(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.testOnReturn").trim()));
 
 		// 是否开启PSCache
-		druidDataSource.setPoolPreparedStatements(Boolean
-				.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.poolPreparedStatements").trim()));
+		druidDataSource.setPoolPreparedStatements(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.poolPreparedStatements").trim()));
 		// 指定每个连接上PSCache的大小
-		druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(Constants.appConfig
+		druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(NumberUtils.toInt(Constants.appConfig
 				.getProperty("spring.datasource.master.maxPoolPreparedStatementPerConnectionSize").trim()));
 		// 配置监控统计拦截的filters
 		druidDataSource.setFilters(Constants.appConfig.getProperty("spring.datasource.master.filters").trim());
@@ -211,8 +216,8 @@ public class DataSourceConfig {
 		druidDataSource.setConnectionProperties(
 				Constants.appConfig.getProperty("spring.datasource.master.connectionProperties").trim());
 		// 设置公用监控数据，合并多个DruidDataSource的监控数据
-		druidDataSource.setUseGlobalDataSourceStat(Boolean
-				.parseBoolean(Constants.appConfig.getProperty("spring.datasource.master.useGlobalDataSourceStat").trim()));
+		druidDataSource.setUseGlobalDataSourceStat(BooleanUtils
+				.toBoolean(Constants.appConfig.getProperty("spring.datasource.master.useGlobalDataSourceStat").trim()));
 		druidDataSource.init(); // 初始化
 		return druidDataSource;
 	}
