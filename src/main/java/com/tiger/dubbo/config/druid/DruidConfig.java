@@ -15,12 +15,12 @@ public class DruidConfig {
 	@Bean
 	public ServletRegistrationBean druidServlet() {
 		ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),
-				Constants.appConfig.getProperty("spring.druid.view").trim());
-		servletRegistrationBean.addInitParameter("resetEnable", Constants.appConfig.getProperty("spring.druid.resetEnable").trim());
-		servletRegistrationBean.addInitParameter("allow", Constants.appConfig.getProperty("spring.druid.allow").trim());
-		servletRegistrationBean.addInitParameter("deny", Constants.appConfig.getProperty("spring.druid.deny").trim());
-		servletRegistrationBean.addInitParameter("loginUsername", Constants.appConfig.getProperty("spring.druid.loginUsername").trim());
-		servletRegistrationBean.addInitParameter("loginPassword", Constants.appConfig.getProperty("spring.druid.loginPassword").trim());
+				Constants.appConfig.getProperty("spring.druid.view"));
+		servletRegistrationBean.addInitParameter("resetEnable", Constants.appConfig.getProperty("spring.druid.resetEnable"));
+		servletRegistrationBean.addInitParameter("allow", Constants.appConfig.getProperty("spring.druid.allow"));
+		servletRegistrationBean.addInitParameter("deny", Constants.appConfig.getProperty("spring.druid.deny"));
+		servletRegistrationBean.addInitParameter("loginUsername", Constants.appConfig.getProperty("spring.druid.loginUsername"));
+		servletRegistrationBean.addInitParameter("loginPassword", Constants.appConfig.getProperty("spring.druid.loginPassword"));
 
 		return servletRegistrationBean;
 	}
@@ -29,9 +29,9 @@ public class DruidConfig {
 	public FilterRegistrationBean filterRegistrationBean() {
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
 		filterRegistrationBean.setFilter(new WebStatFilter());
-		filterRegistrationBean.addUrlPatterns(Constants.appConfig.getProperty("spring.druid.urlPatterns").trim());
-		filterRegistrationBean.addInitParameter("exclusions", Constants.appConfig.getProperty("spring.druid.exclusions").trim());
-		filterRegistrationBean.addInitParameter("profileEnable", Constants.appConfig.getProperty("spring.druid.profileEnable").trim());
+		filterRegistrationBean.addUrlPatterns(Constants.appConfig.getProperty("spring.druid.urlPatterns"));
+		filterRegistrationBean.addInitParameter("exclusions", Constants.appConfig.getProperty("spring.druid.exclusions"));
+		filterRegistrationBean.addInitParameter("profileEnable", Constants.appConfig.getProperty("spring.druid.profileEnable"));
 
 		return filterRegistrationBean;
 	}

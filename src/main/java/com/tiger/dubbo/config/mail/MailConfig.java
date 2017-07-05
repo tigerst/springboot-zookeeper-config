@@ -18,20 +18,20 @@ public class MailConfig {
 	public JavaMailSender mailSender() {
 		JavaMailSenderImpl javaMailSenderImpl = new JavaMailSenderImpl();
 		javaMailSenderImpl.setDefaultEncoding(encoding);
-		javaMailSenderImpl.setHost(Constants.appConfig.getProperty("mail.host").trim());
-		javaMailSenderImpl.setUsername(Constants.appConfig.getProperty("mail.username").trim());
-		javaMailSenderImpl.setPassword(Constants.appConfig.getProperty("mail.password").trim());
+		javaMailSenderImpl.setHost(Constants.appConfig.getProperty("mail.host"));
+		javaMailSenderImpl.setUsername(Constants.appConfig.getProperty("mail.username"));
+		javaMailSenderImpl.setPassword(Constants.appConfig.getProperty("mail.password"));
 		Properties properties = new Properties();
-		properties.setProperty("mail.smtp.auth", Constants.appConfig.getProperty("mail.smtp.auth").trim());
-		properties.setProperty("mail.smtp.ssl.enable", Constants.appConfig.getProperty("mail.smtp.ssl.enable").trim());
-		if("true".equalsIgnoreCase(Constants.appConfig.getProperty("mail.smtp.ssl.enable").trim())){
+		properties.setProperty("mail.smtp.auth", Constants.appConfig.getProperty("mail.smtp.auth"));
+		properties.setProperty("mail.smtp.ssl.enable", Constants.appConfig.getProperty("mail.smtp.ssl.enable"));
+		if("true".equalsIgnoreCase(Constants.appConfig.getProperty("mail.smtp.ssl.enable"))){
 			properties.setProperty("mail.smtp.socketFactory.class" , "javax.net.ssl.SSLSocketFactory");
 			properties.setProperty("mail.smtp.socketFactory.fallback", "false");
-			properties.setProperty("mail.smtp.socketFactory.port", Constants.appConfig.getProperty("mail.smtp.socketFactory.port").trim());
+			properties.setProperty("mail.smtp.socketFactory.port", Constants.appConfig.getProperty("mail.smtp.socketFactory.port"));
 		}
-		properties.setProperty("mail.transport.protocol", Constants.appConfig.getProperty("mail.transport.protocol").trim());
+		properties.setProperty("mail.transport.protocol", Constants.appConfig.getProperty("mail.transport.protocol"));
 		properties.setProperty("mail.debug", "false");
-		properties.setProperty("mail.smtp.timeout", Constants.appConfig.getProperty("mail.smtp.timeout").trim());
+		properties.setProperty("mail.smtp.timeout", Constants.appConfig.getProperty("mail.smtp.timeout"));
 		javaMailSenderImpl.setJavaMailProperties(properties);
 		return javaMailSenderImpl;
 	}

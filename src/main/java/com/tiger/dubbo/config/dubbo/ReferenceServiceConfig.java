@@ -20,7 +20,7 @@ public class ReferenceServiceConfig {
 	@Bean
 	public ReferenceBean<DubboService> dubboService1() {
 		ReferenceBean<DubboService> ref = new ReferenceBean<DubboService>();
-		ref.setVersion(Constants.appConfig.getProperty("dubbo.reference.version").trim()); // dubbo.reference.version
+		ref.setVersion(Constants.appConfig.getProperty("dubbo.reference.version")); // dubbo.reference.version
 		ref.setInterface(DubboService.class);	//各自方法接口
 		ref.setTimeout(5000);	//各自方法调通超时
 		ref.setRetries(3);	//各自方法重试次数

@@ -22,7 +22,7 @@ public class MyBatisMapperScannerConfig {
 		// 获取之前注入的beanName为sqlSessionFactory的对象
 		mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
 		// 指定xml配置文件的路径
-		mapperScannerConfigurer.setBasePackage(Constants.appConfig.getProperty("spring.mybatis.mapperScannerBasePackage").trim());
+		mapperScannerConfigurer.setBasePackage(Constants.appConfig.getProperty("spring.mybatis.mapperScannerBasePackage"));
 		return mapperScannerConfigurer;
 	}
 }

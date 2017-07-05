@@ -23,12 +23,12 @@ public class ExportServiceConfig {
 	@Bean
     public ServiceBean<DubboService> dubboServiceExport(@Autowired @Qualifier("dubboService") DubboService dubboService) {
         ServiceBean<DubboService> serviceBean = new ServiceBean<DubboService>();
-        serviceBean.setProxy(Constants.appConfig.getProperty("dubbo.service.proxy").trim());	//dubbo.service.proxy
-        serviceBean.setVersion(Constants.appConfig.getProperty("dubbo.service.version").trim());	//dubbo.service.version
+        serviceBean.setProxy(Constants.appConfig.getProperty("dubbo.service.proxy"));	//dubbo.service.proxy
+        serviceBean.setVersion(Constants.appConfig.getProperty("dubbo.service.version"));	//dubbo.service.version
         serviceBean.setInterface(DubboService.class);
         serviceBean.setRef(dubboService);
-        serviceBean.setTimeout(NumberUtils.toInt(Constants.appConfig.getProperty("dubbo.service.timeout").trim(), 5000));	//dubbo.service.timeout	//超时
-        serviceBean.setRetries(NumberUtils.toInt(Constants.appConfig.getProperty("dubbo.service.retries").trim(), 3));	//dubbo.service.retries	//重试次数
+        serviceBean.setTimeout(NumberUtils.toInt(Constants.appConfig.getProperty("dubbo.service.timeout"), 5000));	//dubbo.service.timeout	//超时
+        serviceBean.setRetries(NumberUtils.toInt(Constants.appConfig.getProperty("dubbo.service.retries"), 3));	//dubbo.service.retries	//重试次数
         return serviceBean;
     }
 	

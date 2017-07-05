@@ -50,7 +50,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
 		//设置datasource
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		//设置包别名
-		sqlSessionFactoryBean.setTypeAliasesPackage(Constants.appConfig.getProperty("spring.mybatis.typeAliasesPackage").trim());
+		sqlSessionFactoryBean.setTypeAliasesPackage(Constants.appConfig.getProperty("spring.mybatis.typeAliasesPackage"));
 		
 		setMybatisCache(sqlSessionFactoryBean);	//设置mybatis缓存
 		
@@ -61,7 +61,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
 		 */
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();	//资源文件路径解析器，xml配置时所需
 		try {
-			String mappingXml = Constants.appConfig.getProperty("spring.mybatis.mappingXml").trim();
+			String mappingXml = Constants.appConfig.getProperty("spring.mybatis.mappingXml");
 			if(StringUtils.isNotEmpty(mappingXml))
 				sqlSessionFactoryBean.setMapperLocations(resolver.getResources(mappingXml));	//mapper.xml配置
 			return sqlSessionFactoryBean.getObject();
@@ -80,22 +80,22 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         Properties properties = new Properties();
 //        properties.setProperty("closeConn", "true");	//查询后关闭连接
         //数据库官方语言
-        properties.setProperty("dialect", Constants.appConfig.getProperty("spring.pageHelper.dialect").trim());
+        properties.setProperty("dialect", Constants.appConfig.getProperty("spring.pageHelper.dialect"));
         //RowBounds是否进行count查询 - 默认不查询
-        properties.setProperty("rowBoundsWithCount", Constants.appConfig.getProperty("spring.pageHelper.rowBoundsWithCount").trim());
+        properties.setProperty("rowBoundsWithCount", Constants.appConfig.getProperty("spring.pageHelper.rowBoundsWithCount"));
         //当设置为true的时候，如果pagesize设置为0（或RowBounds的limit=0），就不执行分页，返回全部结果
-        properties.setProperty("pageSizeZero", Constants.appConfig.getProperty("spring.pageHelper.pageSizeZero").trim());
+        properties.setProperty("pageSizeZero", Constants.appConfig.getProperty("spring.pageHelper.pageSizeZero"));
         //是否合理化分页
-        properties.setProperty("reasonable", Constants.appConfig.getProperty("spring.pageHelper.reasonable").trim());
+        properties.setProperty("reasonable", Constants.appConfig.getProperty("spring.pageHelper.reasonable"));
         //是否支持接口参数来传递分页参数，默认false
-        properties.setProperty("supportMethodsArguments", Constants.appConfig.getProperty("spring.pageHelper.supportMethodsArguments").trim());
+        properties.setProperty("supportMethodsArguments", Constants.appConfig.getProperty("spring.pageHelper.supportMethodsArguments"));
         //offset作为PageNum使用
-        properties.setProperty("offsetAsPageNum", Constants.appConfig.getProperty("spring.pageHelper.offsetAsPageNum").trim());
+        properties.setProperty("offsetAsPageNum", Constants.appConfig.getProperty("spring.pageHelper.offsetAsPageNum"));
         //初始化SqlUtil的PARAMS
-//        properties.setProperty("params", Constants.ZK_CONF_MAP.get("spring.pageHelper.param").trim());
+//        properties.setProperty("params", Constants.ZK_CONF_MAP.get("spring.pageHelper.param"));
         properties.setProperty("params", Constants.appConfig.getProperty("spring.pageHelper.params"));
         //always总是返回PageInfo类型,check检查返回类型是否为PageInfo,none返回Page
-        properties.setProperty("returnPageInfo", Constants.appConfig.getProperty("spring.pageHelper.returnPageInfo").trim());
+        properties.setProperty("returnPageInfo", Constants.appConfig.getProperty("spring.pageHelper.returnPageInfo"));
         pageHelper.setProperties(properties);
         //添加分页插件
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});

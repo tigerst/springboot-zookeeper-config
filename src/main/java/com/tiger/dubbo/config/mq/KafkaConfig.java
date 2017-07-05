@@ -45,21 +45,21 @@ public class KafkaConfig {
 	public Producer<String, String> kafkaProducer() throws Exception {
 		Properties props = new Properties();
 		//kafka服务器列表-producer and consumer
-		props.put("bootstrap.servers", Constants.appConfig.getProperty("bootstrap.servers").trim());
+		props.put("bootstrap.servers", Constants.appConfig.getProperty("bootstrap.servers"));
 		//消息确认模式-producer
-		props.put("acks", Constants.appConfig.getProperty("acks").trim());
+		props.put("acks", Constants.appConfig.getProperty("acks"));
 		//重试次数-producer
-		props.put("retries", Constants.appConfig.getProperty("retries").trim());
+		props.put("retries", Constants.appConfig.getProperty("retries"));
 		//批次大小-producer
-		props.put("batch.size", Constants.appConfig.getProperty("batch.size").trim());
+		props.put("batch.size", Constants.appConfig.getProperty("batch.size"));
 		//请求队列大小-producer
-		props.put("linger.ms", Constants.appConfig.getProperty("linger.ms").trim());
+		props.put("linger.ms", Constants.appConfig.getProperty("linger.ms"));
 		//消息缓冲池大小-producer
-		props.put("buffer.memory", Constants.appConfig.getProperty("buffer.memory").trim());
+		props.put("buffer.memory", Constants.appConfig.getProperty("buffer.memory"));
 		//key序列化器-producer
-		props.put("key.serializer", Constants.appConfig.getProperty("key.serializer").trim());
+		props.put("key.serializer", Constants.appConfig.getProperty("key.serializer"));
 		//value序列化器-producer
-		props.put("value.serializer", Constants.appConfig.getProperty("value.serializer").trim());
+		props.put("value.serializer", Constants.appConfig.getProperty("value.serializer"));
 		
 		return new KafkaProducer<String, String>(props);
 	}
