@@ -278,7 +278,7 @@ http://www.w3.org/2001/XMLSchema-instance ">
 	</build>
 
 	<!-- nexus2.x版本 -->
-	<repositories>
+	<!--<repositories>
 		<repository>
 			<id>nexus</id>
 			<url>http://10.7.30.225:9001/nexus/content/groups/public/</url>
@@ -301,6 +301,6 @@ http://www.w3.org/2001/XMLSchema-instance ">
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
-	</pluginRepositories>
+	</pluginRepositories>-->
 
 </project>
