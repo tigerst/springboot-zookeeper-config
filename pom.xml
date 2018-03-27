@@ -47,6 +47,10 @@ http://www.w3.org/2001/XMLSchema-instance ">
 					<artifactId>zookeeper</artifactId>
 					<groupId>org.apache.zookeeper</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -143,10 +147,18 @@ http://www.w3.org/2001/XMLSchema-instance ">
 			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
 
+		<!-- common-lang -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.5</version>
+		</dependency>
+		
+		<!-- common-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
 		</dependency>
 
 		<!-- javamail -->
@@ -190,6 +202,16 @@ http://www.w3.org/2001/XMLSchema-instance ">
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka_2.11</artifactId>
 			<version>${kafka.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- kafka clients -->
@@ -254,6 +276,19 @@ http://www.w3.org/2001/XMLSchema-instance ">
 			<version>0.1.54</version>
 		</dependency>
 		
+		<!-- rest -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1-m09</version>
+		</dependency>
+		
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<!-- Package as an executable jar -->
@@ -301,6 +336,6 @@ http://www.w3.org/2001/XMLSchema-instance ">
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
-	</pluginRepositories>-->
+	</pluginRepositories> -->
 
 </project>
