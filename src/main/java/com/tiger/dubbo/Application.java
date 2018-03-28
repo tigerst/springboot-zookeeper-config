@@ -21,7 +21,7 @@ public class Application {
 		SpringApplication application = new SpringApplication(Application.class);
 		ConfigurableApplicationContext applicationContext = application.run(args);
 		CheckZKConfig checkZKConfig = new CheckZKConfig(application, applicationContext);	//设置应用和上下文
-		checkZKConfig.check(args);	//变动校验
+		//checkZKConfig.check(args);	//变动校验
 		checkZKConfig.scheduleCheck(args);	//定时校验
 		String projectPath = System.getProperty("user.dir");	//当前工程路径
 		String projectName = projectPath.substring(projectPath.lastIndexOf(File.separator) + 1).replace("-", "");
