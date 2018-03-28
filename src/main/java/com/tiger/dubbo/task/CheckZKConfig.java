@@ -96,7 +96,7 @@ public class CheckZKConfig {
 			for (String key : list) {
 				childPath = path + "/" + key;
 				value = new String(client.getData().forPath(childPath), "UTF-8");
-				if (value.trim().equalsIgnoreCase(Constants.appConfig.getProperty(key))) {
+				if (value.trim().equalsIgnoreCase(Constants.appConfig.getProperty(key).trim())) {
 					continue; // 相同则跳过
 				}
 				Constants.appConfig.setProperty(key, value); // 加入配置map中
